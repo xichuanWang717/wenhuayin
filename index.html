@@ -16,19 +16,71 @@
   </header>
 
   <main class="snap-root" id="scrollRoot">
-    <section class="scene scene-hero" data-index="0">
+    <div class="chapter-hud" aria-hidden="true">
+      <span id="chapterNumber">01</span>
+      <i></i>
+      <span id="chapterTitle">千年之火</span>
+    </div>
+    <div class="scroll-meter" aria-hidden="true"><span id="scrollMeter"></span></div>
+    <aside class="side-menu" aria-label="探索路径">
+      <p>你要探索什么?</p>
+      <a href="#scene-0" data-jump="0">-> 起火</a>
+      <a href="#scene-2" data-jump="2">-> 釉色</a>
+      <a href="#scene-4" data-jump="4">-> 秘色</a>
+      <a href="#scene-5" data-jump="5">-> 龙窑</a>
+      <a href="#scene-6" data-jump="6">浏览</a>
+    </aside>
+    <div class="mini-control" aria-hidden="true">
+      <button type="button" data-step="-1">&lt;&lt;</button>
+      <span id="miniChapter">窑火印</span>
+      <button type="button" data-step="1">&gt;&gt;</button>
+    </div>
+    <aside class="space-stage" aria-hidden="true">
+      <canvas class="webgl-seal" id="sealCanvas"></canvas>
+      <div class="seal-copy seal-copy-opening">
+        <span>TIME AWAKENS THE SEAL</span>
+      </div>
+      <div class="seal-copy seal-copy-ending">
+        <span>落印成记</span>
+      </div>
+      <div class="seal-tap-hint" aria-hidden="true">
+        <i></i>
+        <span>轻点落印</span>
+      </div>
+      <div class="depth-field"></div>
+      <div class="particle-cloud">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <canvas class="vessel-canvas" id="vesselCanvas" aria-hidden="true"></canvas>
+      <div class="gallery-rig" id="galleryRig">
+        <button class="artifact-card" type="button" data-target="0" style="--card-color:#8fb6a7"><img src="assets/01.png" alt=""><span>千年之火</span></button>
+        <button class="artifact-card" type="button" data-target="1" style="--card-color:#9ab0a0"><img src="assets/02.png" alt=""><span>曹娥江源</span></button>
+        <button class="artifact-card" type="button" data-target="2" style="--card-color:#b7b997"><img src="assets/03.png" alt=""><span>釉色初成</span></button>
+        <button class="artifact-card" type="button" data-target="3" style="--card-color:#d7c8a5"><img src="assets/04.png" alt=""><span>南青北白</span></button>
+        <button class="artifact-card" type="button" data-target="4" style="--card-color:#9fc0b8"><img src="assets/05.png" alt=""><span>秘色瓷</span></button>
+        <button class="artifact-card" type="button" data-target="5" style="--card-color:#d1a06e"><img src="assets/06.png" alt=""><span>龙窑火路</span></button>
+        <button class="artifact-card" type="button" data-target="6" style="--card-color:#b5c5b6"><img src="assets/07.png" alt=""><span>出窑见印</span></button>
+      </div>
+      <div class="focus-orbit"></div>
+    </aside>
+    <section class="scene scene-hero" id="scene-0" data-index="0">
       <img class="scene-bg" src="assets/01.png" alt="越窑青瓷千年之火封面背景">
       <div class="veil"></div>
       <article class="copy copy-center hero-copy reveal in">
         <p class="eyebrow">YUE KILN CELADON</p>
-        <h1>越窑青瓷<br>千年之火</h1>
-        <p>从东汉起火，到秘色成名。</p>
-        <p>一窑青火，烧出中国最早的成熟青瓷体系。</p>
+        <h1>青瓷之印<br>被时间唤醒</h1>
+        <p>青瓷印章轻压在印泥上，窑火残光从上方落下。</p>
+        <p>当你向上滑动，它会从静止物体变成被提起的器物。</p>
+        <ul class="fact-strip">
+          <li><b>跨度</b><span>东汉至南宋</span></li>
+          <li><b>核心窑区</b><span>上林湖 · 曹娥江</span></li>
+          <li><b>关键词</b><span>釉色 / 龙窑 / 茶器</span></li>
+        </ul>
       </article>
       <span class="scroll-hint">向上滑动 / 进入窑火</span>
     </section>
 
-    <section class="scene scene-origin" data-index="1">
+    <section class="scene scene-origin" id="scene-1" data-index="1">
       <img class="scene-bg" src="assets/02.png" alt="东汉曹娥江流域青瓷起源背景">
       <div class="veil veil-left"></div>
       <div class="float-mote mote-a"></div>
@@ -38,10 +90,15 @@
         <p>越窑青瓷，是中国最早被系统化烧制的成熟青瓷体系。</p>
         <p>它起于东汉曹娥江流域，在千年窑火中形成稳定的“青瓷语言”。</p>
         <p class="quote">泥土第一次在火中获得清晰的方向。</p>
+        <ul class="fact-strip">
+          <li><b>水系</b><span>曹娥江连通原料与运输</span></li>
+          <li><b>窑场</b><span>上林湖周边窑址密集</span></li>
+          <li><b>器类</b><span>碗、盘、盏、执壶逐渐成熟</span></li>
+        </ul>
       </article>
     </section>
 
-    <section class="scene scene-glaze" data-index="2">
+    <section class="scene scene-glaze" id="scene-2" data-index="2">
       <img class="scene-bg" src="assets/03.png" alt="南北朝青瓷釉层稳定背景">
       <div class="veil veil-left"></div>
       <div class="float-mote mote-b"></div>
@@ -51,22 +108,32 @@
         <p>胎质从粗糙走向致密，器物开始拥有“轻”的质感。</p>
         <p>釉层由薄变匀，青色不再只是偶然，而成为可以被反复抵达的经验。</p>
         <p class="quote">青色开始成为一种稳定的工艺语言。</p>
+        <ul class="fact-strip">
+          <li><b>釉</b><span>草木灰釉带来青黄、青绿层次</span></li>
+          <li><b>火</b><span>还原气氛影响最终色相</span></li>
+          <li><b>工序</b><span>制胎、修坯、施釉、入窑</span></li>
+        </ul>
       </article>
     </section>
 
-    <section class="scene scene-tang" data-index="3">
+    <section class="scene scene-tang" id="scene-3" data-index="3">
       <img class="scene-bg" src="assets/04.png" alt="唐代南青北白背景">
       <div class="veil"></div>
       <article class="copy copy-center top-copy reveal">
         <p class="eyebrow">唐代 · 南青北白</p>
         <h2>两种审美方向</h2>
         <p>唐代的审美被分成两种方向：南方是越窑的青，北方是邢窑的白。</p>
+        <ul class="fact-strip">
+          <li><b>茶器</b><span>陆羽推崇越窑青瓷茶碗</span></li>
+          <li><b>审美</b><span>类玉、类冰，追求含蓄光泽</span></li>
+          <li><b>贸易</b><span>越窑器向东亚与海外传播</span></li>
+        </ul>
       </article>
       <span class="soft-label label-celadon">南方之青</span>
       <span class="soft-label label-white">北方之白</span>
     </section>
 
-    <section class="scene scene-mise" data-index="4">
+    <section class="scene scene-mise" id="scene-4" data-index="4">
       <img class="scene-bg" src="assets/05.png" alt="秘色瓷主展品背景">
       <div class="veil veil-mise"></div>
       <div class="radial-glow"></div>
@@ -76,10 +143,15 @@
         <p>秘色瓷不是颜色，而是一种“不可言说的青”。</p>
         <p>它在光下不张扬，却在暗处发出温润的内光。</p>
         <p class="quote">“千峰翠色”，是诗人对它的形容。</p>
+        <ul class="fact-strip">
+          <li><b>证据</b><span>法门寺地宫出土秘色瓷</span></li>
+          <li><b>身份</b><span>晚唐五代时期的高等级贡瓷</span></li>
+          <li><b>视觉</b><span>薄釉、润光、青绿之间</span></li>
+        </ul>
       </article>
     </section>
 
-    <section class="scene scene-kiln" data-index="5">
+    <section class="scene scene-kiln" id="scene-5" data-index="5">
       <img class="scene-bg" src="assets/06.png" alt="龙窑依山烧制现场背景">
       <div class="veil veil-left kiln-veil"></div>
       <div class="ember-layer"><i></i><i></i><i></i><i></i><i></i></div>
@@ -89,19 +161,29 @@
         <h2>火焰顺坡上行</h2>
         <p>越窑采用龙窑烧制。窑体依山而建，坡度形成自然抽风系统。</p>
         <p>火焰由窑头向上延伸，同一批器物因窑位不同，会呈现不同青色层次。</p>
+        <ul class="fact-strip">
+          <li><b>结构</b><span>长条窑室依山势上升</span></li>
+          <li><b>保护</b><span>匣钵隔绝灰烬与明火</span></li>
+          <li><b>变量</b><span>窑位、温度、气氛决定釉色</span></li>
+        </ul>
       </article>
       <span class="kiln-tag tag-fire">窑头进火</span>
       <span class="kiln-tag tag-watch">观火候</span>
       <span class="kiln-tag tag-path">火路上行</span>
     </section>
 
-    <section class="scene scene-ending" data-index="6">
+    <section class="scene scene-ending" id="scene-6" data-index="6">
       <img class="scene-bg" src="assets/07.png" alt="出窑见印结尾背景">
       <div class="veil veil-ending"></div>
       <article class="copy copy-center ending-copy reveal">
         <p class="eyebrow">出窑 · 见印</p>
-        <h2>一印入瓷<br>一触见域</h2>
-        <p>从千年窑火走出，青瓷不再只是被观看的器物，也成为可以触碰、落印与再次打开的记忆入口。</p>
+        <h2>一印落下<br>时间确认</h2>
+        <p>宣纸展开，印章带着重量缓慢落下。盖印之后，器物抬起，留下一个可以再次打开的记忆入口。</p>
+        <ul class="fact-strip">
+          <li><b>NFC</b><span>实体印章触发数字页面</span></li>
+          <li><b>三入口</b><span>文化、工艺、记忆彼此连接</span></li>
+          <li><b>转译</b><span>把窑火经验变成可交互叙事</span></li>
+        </ul>
       </article>
       <div class="actions reveal">
         <a class="button primary" href="../游戏印/index.html">进入青韵印</a>
@@ -110,6 +192,6 @@
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
